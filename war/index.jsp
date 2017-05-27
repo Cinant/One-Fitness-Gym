@@ -31,23 +31,24 @@
 								if (per > 3) {
 							--%>
 							<li class="active"><button type="button" id="reg">Registrar</button></li>
-							<li class="dropdown">
+							<!-- li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"> Mostrar: <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<%--
 										if (per > 4) {
-									--%><li><a href="mostrarA">Administradores</a></li>
+									--%><!-- li><a href="mostrarA">Administradores</a></li>
 									<%--
 										}
 									--%>
-									<li><a href="mostrarS">Secretarias</a></li>
+									<!-- li><a href="mostrarS">Secretarias</a></li>
 									<li><a href="mostrarT">Trainers</a></li>
 									<li class="divider"></li>
 									<li><a href="mostrarC">Clientes</a></li>
-								</ul></li>
+								</ul></li-->
 							<%--
 								}
 							--%>
+							<li><a href="regperson">Registrar usuario</a></li>
 							<li><a href="">Misión</a></li>
 							<li><a href="">Visión</a></li>
 							<li><a href="">Contacto</a></li>
@@ -66,7 +67,7 @@
 						<%--
 							if (per == 0) {
 						--%>
-						<form method="post" action="/login"
+						<!-- form method="post" action="/login"
 							class="navbar-form navbar-right" role="login">
 							<div class="form-group">
 								<label class="control-label" for="mail">Correo:</label> <input type="email" name="mail">
@@ -86,7 +87,7 @@
 							<div class="form-group">
 								<a href="/close"><button type="button" class="btn btn-warning">Salir</button></a>
 							</div>
-						</div>
+						</div-->
 						<%--
 							}
 						--%>

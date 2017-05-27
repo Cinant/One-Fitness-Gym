@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>OneFitnessGym</servlet-name>
+		<servlet-class>one.gym.surface.OneFitnessGymServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OneFitnessGym</servlet-name>
+		<url-pattern>/onefitnessgym</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RegKindOfPerson</servlet-name>
+		<servlet-class>one.gym.surface.RegKindOfPerson</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegKindOfPerson</servlet-name>
+		<url-pattern>/regkoperson</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RegPerson</servlet-name>
+		<servlet-class>one.gym.surface.RegPerson</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegPerson</servlet-name>
+		<url-pattern>/saveperson</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ListkoPerson</servlet-name>
+		<servlet-class>one.gym.surface.ListKindOfPerson</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListkoPerson</servlet-name>
+		<url-pattern>/listkoperson</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ListPerson</servlet-name>
+		<servlet-class>one.gym.surface.ListPerson</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListPerson</servlet-name>
+		<url-pattern>/listperson</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>showrp</servlet-name>
+		<servlet-class>one.gym.surface.ShowRegPerson</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showrp</servlet-name>
+		<url-pattern>/regperson</url-pattern>
+	</servlet-mapping>
+	
+	<!-- servlet>
+   		<servlet-name>hello</servlet-name>
+   		<jsp-file>/WEB-INF/registerPerson.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+  		<servlet-name>hello</servlet-name>
+  		<url-pattern>/regperson</url-pattern>
+	</servlet-mapping-->
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
