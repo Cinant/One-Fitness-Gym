@@ -13,22 +13,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-public class ListKindOfPerson extends HttpServlet {
+public class ListResource extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// resp.setContentType("text/plain");
 
 		final PersistenceManager pm = PMF.get().getPersistenceManager();
-		final Query q = pm.newQuery(KindOfPerson.class);
+		final Query q = pm.newQuery(Resource.class);
 
-		q.setOrdering("id descending");
+		q.setOrdering("id ascending");
 		// q.setRange(0, 10);
 		try {
 			@SuppressWarnings("unchecked")
-			List<KindOfPerson> koperson = (List<KindOfPerson>) q.execute();
-			req.setAttribute("koperson", koperson);
+			List<Resource> resource = (List<Resource>) q.execute();
+			req.setAttribute("resource", resource);
 			RequestDispatcher rd = req
-					.getRequestDispatcher("/WEB-INF/listkoperson.jsp");
+					.getRequestDispatcher("/WEB-INF/listresource.jsp");
 			rd.forward(req, resp);
 		} catch (Exception e) {
 			System.out.println(e);

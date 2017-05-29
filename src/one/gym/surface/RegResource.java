@@ -10,16 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
 public class RegResource extends HttpServlet{
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		resp.setContentType("text/plain");
 		
 		String name = req.getParameter("name");
+		String link = req.getParameter("link");
+		String description = req.getParameter("description");
 		
 		
 		
 		final PersistenceManager pm = PMF.get().getPersistenceManager();
-		final Resource p = new Resource(name);
+		final Resource p = new Resource(name, link,  description);
 		try{
 			pm.makePersistent(p);
 			resp.getWriter().println("Tipo de Persona grabada correctamente.");
