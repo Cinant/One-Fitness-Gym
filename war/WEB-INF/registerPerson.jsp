@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<form action="/saveperson" method="get">
+			<form action="/saveperson" method="post">
 				Nombre:<input name="name" type="text"><br>
 				Apellidos:<input name="surName" type="text"><br>
 				Correo:<input name="mail" type="email"><br>

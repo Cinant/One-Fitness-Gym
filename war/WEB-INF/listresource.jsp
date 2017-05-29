@@ -22,8 +22,9 @@
 
 				<%for( Resource c : resource ) {%>
 			
-					<p><%= c.getName() %></p>1--
-					<%= c.getId() %>
+					<p><%= c.getName() %></p>
+					<p><%= c.getDescription() %></p>
+					<%= c.getId() %><br><br>
 			
 				<%}%>
 			

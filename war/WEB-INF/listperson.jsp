@@ -16,20 +16,33 @@
 			
 			<div class="Title"><p>Mostrando <%= person.size() %> Personas</p></div>
 			<div class="Heading">
-			<div ><p>Nombre</p></div>
+			<div >Nombre</div>
 			
 			</div>
-			<form action="">
 			
 			
-			</form>
+			
 
 				<%for( Person c : person ) {%>
-			
+				<form action="/findperson" method="post">
 					<p><%= c.getName() %></p>
+					<p><%= c.getId() %></p>
+					<p><%= c.getId().getId() %></p>
+					<p><%= c.getBirthday() %></p>
+					<input type="hidden" name="key" value='<%= c.getId().getId() %>'>
+					<p><%= c.getSurName() %></p>
 					<p><%= c.getMail() %></p>
+					<p>Activo: </p>
+					<% if(c.isActive()){ %>
+					<p>Si</p>
+					<%}
+					else {%><p>No</p><%
+					} %>
+					<input type="submit" value="Editar">
+				</form>
+				<%} %>
+				
 			
-				<%}%>
 			
 		
 		
