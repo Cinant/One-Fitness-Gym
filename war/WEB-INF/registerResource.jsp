@@ -13,6 +13,8 @@
 			<form action="/saveresource" method="post">
 				Nombre:<input name="name" type="text"><br>
 				Enlace:<input name="link" type="text"><br>
+				Tipo:<br>CRUD<input name="kind" type="radio" value="crud"><br>
+				Simple<input name="simple" type="radio" value="simple"><br>
 				Descripción:<input name="description" type="text">
 				
 				

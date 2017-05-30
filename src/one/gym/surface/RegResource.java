@@ -17,11 +17,11 @@ public class RegResource extends HttpServlet{
 		String name = req.getParameter("name");
 		String link = req.getParameter("link");
 		String description = req.getParameter("description");
-		
+		String kind = req.getParameter("kind");
 		
 		
 		final PersistenceManager pm = PMF.get().getPersistenceManager();
-		final Resource p = new Resource(name, link,  description);
+		final Resource p = new Resource(name, link, kind, description);
 		try{
 			pm.makePersistent(p);
 			resp.getWriter().println("Tipo de Persona grabada correctamente.");

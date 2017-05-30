@@ -15,11 +15,20 @@ public class Resource {
 	private Key id;
 	@Persistent
 	private String name;
+	@Persistent
+	private String link;
+	@Persistent
+	private String kind;
+	@Persistent
+	private String description;
+		
 	
-	
-	public Resource(String name) {
+	public Resource(String name,String link, String kind, String description) {
 		super();
 		this.name = name;
+		this.link = link;
+		this.kind = kind;
+		this.description = description;
 	}
 	
 	
@@ -38,6 +47,36 @@ public class Resource {
 
 	public void setId(Key id) {
 		this.id = id;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public String getLink() {
+		return link;
+	}
+
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+
+	public String getKind() {
+		return kind;
+	}
+
+
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 	
 

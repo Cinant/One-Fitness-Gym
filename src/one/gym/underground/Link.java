@@ -18,6 +18,10 @@ public class Link {
 	@Persistent
 	private String name;
 	@Persistent
+	private String kind;
+	@Persistent
+	private boolean canI = false;
+	@Persistent
 	private boolean C = false;
 	@Persistent
 	private boolean R = false;
@@ -26,17 +30,26 @@ public class Link {
 	@Persistent
 	private boolean D = false;
 	
-	public Link(String name, boolean c, boolean r, boolean u, boolean d) {
+	public Link(String name,String kind, boolean c, boolean r, boolean u, boolean d) {
 		super();
 		this.name = name;
+		this.kind = kind;
 		C = c;
 		R = r;
 		U = u;
 		D = d;
+		canI = true;
 	}
 	
-	public Link(String name){
+	public Link(String name, String kind){
 		this.name = name;
+		this.kind = kind;
+	}
+	
+	public Link(String name, String kind, boolean canI) {
+		this.name = name;
+		this.kind = kind;
+		this.canI = canI;
 	}
 	
 	
@@ -75,6 +88,22 @@ public class Link {
 	}
 	public void setD(boolean d) {
 		D = d;
+	}
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public boolean isCanI() {
+		return canI;
+	}
+
+	public void setCanI(boolean canI) {
+		this.canI = canI;
 	}
 
 }

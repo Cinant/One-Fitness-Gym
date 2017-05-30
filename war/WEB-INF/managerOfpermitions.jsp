@@ -50,10 +50,15 @@
 							<%= e.get(j).getName() %>
 							<h3><%= resource.get(i).getName() %></h3>
 							<form action="/savepermitions" method="post">
-							Crear:Si<input type="radio" name="activec" value="true" <% if(e.get(j).isC()){ %> checked<%} %> >  No<input type="radio" name="activec" value="false" <% if(!e.get(j).isC()){ %> checked<%} %>><br>
-							Ver:Si<input type="radio" name="activer" value="true" <% if(e.get(j).isR()){ %> checked<%} %>>  No<input type="radio" name="activer" value="false" <% if(!e.get(j).isR()){ %> checked<%} %>><br>
-							Editar:Si<input type="radio" name="activeu" value="true" <% if(e.get(j).isU()){ %> checked<%} %>>  No<input type="radio" name="activeu" value="false" <% if(!e.get(j).isU()){ %> checked<%} %>><br>
-							Eliminar:Si<input type="radio" name="actived" value="true" <% if(e.get(j).isD()){ %> checked<%} %>>  No<input type="radio" name="actived" value="false" <% if(!e.get(j).isD()){ %> checked<%} %>><br>
+							<% if(resource.get(i).getKind().equals("crud")){ %>
+								Crear:Si<input type="radio" name="activec" value="true" <% if(e.get(j).isC()){ %> checked<%} %> >  No<input type="radio" name="activec" value="false" <% if(!e.get(j).isC()){ %> checked<%} %>><br>
+								Ver:Si<input type="radio" name="activer" value="true" <% if(e.get(j).isR()){ %> checked<%} %>>  No<input type="radio" name="activer" value="false" <% if(!e.get(j).isR()){ %> checked<%} %>><br>
+								Editar:Si<input type="radio" name="activeu" value="true" <% if(e.get(j).isU()){ %> checked<%} %>>  No<input type="radio" name="activeu" value="false" <% if(!e.get(j).isU()){ %> checked<%} %>><br>
+								Eliminar:Si<input type="radio" name="actived" value="true" <% if(e.get(j).isD()){ %> checked<%} %>>  No<input type="radio" name="actived" value="false" <% if(!e.get(j).isD()){ %> checked<%} %>><br>
+							<%}else{ %>
+								Puede: Si<input type="radio" name="activec" value="true" <% if(e.get(j).isCanI()){ %> checked<%} %> >  No<input type="radio" name="activec" value="false" <% if(!e.get(j).isCanI()){ %> checked<%} %>><br> 
+							<%} %>
+							<input type="hidden" name="kind" value='<%= e.get(j).getKind() %>'>
 							<input type="hidden" name="id" value='<%= e.get(j).getName() %>'>
 							<input type="hidden" name="idm" value='<%= c.getId().getId() %>'>
 							<input type="submit" value='Guardar permisos de <%= e.get(j).getName()+" para "+c.getName() %>'>
@@ -62,10 +67,15 @@
 						}else if(j==e.size()-1){%>
 							<h3><%= resource.get(i).getName() %></h3>
 							<form action="/savepermitions" method="post">
-							Crear:Si<input type="radio" name="activec" value="true">  No<input type="radio" name="activec" value="false" checked><br>
-							Ver:Si<input type="radio" name="activer" value="true">  No<input type="radio" name="activer" value="false" checked><br>
-							Editar:Si<input type="radio" name="activeu" value="true">  No<input type="radio" name="activeu" value="false" checked><br>
-							Eliminar:Si<input type="radio" name="actived" value="true">  No<input type="radio" name="actived" value="false" checked><br>
+							<%if (resource.get(i).getKind().equals("crud")){ %>	
+								Crear:Si<input type="radio" name="activec" value="true">  No<input type="radio" name="activec" value="false" checked><br>
+								Ver:Si<input type="radio" name="activer" value="true">  No<input type="radio" name="activer" value="false" checked><br>
+								Editar:Si<input type="radio" name="activeu" value="true">  No<input type="radio" name="activeu" value="false" checked><br>
+								Eliminar:Si<input type="radio" name="actived" value="true">  No<input type="radio" name="actived" value="false" checked><br>
+							<%}else{ %>
+								Puede: Si<input type="radio" name="activec" value="true" <% if(e.get(j).isCanI()){ %> checked<%} %> >  No<input type="radio" name="activec" value="false" <% if(!e.get(j).isCanI()){ %> checked<%} %>><br>
+							<%} %>	
+							<input type="hidden" name="kind" value='<%= e.get(j).getKind() %>'>
 							<input type="hidden" name="id" value='<%= resource.get(i).getId().getId() %>'>
 							<input type="hidden" name="idm" value='<%= c.getId().getId() %>'>
 							<input type="submit" value='Guardar permisos de <%= resource.get(i).getId().getId()+" para "+c.getName() %>'>

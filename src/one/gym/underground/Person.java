@@ -1,9 +1,14 @@
 package one.gym.underground;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+
 import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
@@ -23,9 +28,13 @@ public class Person {
 	@Persistent
 	private String birthday;
 	@Persistent
+	private String gender;
+	@Persistent
 	private boolean active;
 	@Persistent
 	private String kindOfPerson;
+	@Persistent
+	private List<Link> personalResources = new ArrayList<Link>();
 	
 	
 	
@@ -87,7 +96,17 @@ public class Person {
 	public void setKindOfPerson(String kindOfPerson) {
 		this.kindOfPerson = kindOfPerson;
 	}
-	
-	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
+	public List<Link> getPersonalResources() {
+		return personalResources;
+	}
+	public void setPersonalResources(List<Link> personalResources) {
+		this.personalResources = personalResources;
+	}
 }

@@ -1,7 +1,6 @@
 package one.gym.surface;
 
 import java.io.IOException;
-
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import one.gym.underground.KindOfPerson;
 import one.gym.underground.Person;
 
 import com.google.appengine.api.users.User;
@@ -47,54 +47,36 @@ public class GmailServlet extends HttpServlet {
 				List<Person> person = (List<Person>) q.execute(user.getEmail());
 				if (!person.isEmpty() && person.size() == 1) {
 					Person p = person.get(0);
+					if(p.isActive()){
+						misesion = req.getSession(true);
+						misesion.setAttribute("email", user.getEmail());
+						misesion.setAttribute("name", p.getName());
+						misesion.setAttribute("surname", p.getSurName());
+						misesion.setAttribute("id", p.getId().getId());
+						//misesion.setAttribute("all", (Person)p);
+						//misesion.setAttribute("estado", (String)((Boolean)p.isActive()).toString());
+						
+						if(p.getPersonalResources().isEmpty()){
+							//Query q2 = pm.newQuery(KindOfPerson.class);
+							KindOfPerson koperson = pm.getObjectById(KindOfPerson.class, Long.parseLong(p.getKindOfPerson()));
+							req.setAttribute("permisos", koperson.getPermision());
+							
+						}else{
+							req.setAttribute("permisos", p.getPersonalResources());
+						}
+						
+						
+						//misesion.setAttribute("all", p);
+						resp.sendRedirect("/");
+					}else{
+						resp.sendRedirect(us.createLogoutURL("/index.jsp"));
+					}
 
-					misesion = req.getSession(true);
-					misesion.setAttribute("email", user.getEmail());
-					misesion.setAttribute("name", p.getName());
-					misesion.setAttribute("surname", p.getSurName());
-					misesion.setAttribute("id", p.getId().getId());
-					//misesion.setAttribute("all", (Person)p);
-					misesion.setAttribute("estado", (String)((Boolean)p.isActive()).toString());
-					//misesion.setAttribute("all", p);
-					resp.sendRedirect("/");
 					
-					/*out.println("<!DOCTYPE html>" + "<html>"
-							+ "<head><title>Información de la cuenta</title>"
-							+ "<meta charset=utf-8;>" + "<body>"
-							+ "<h1>Información de la Cuenta Google</h1>"
-							+ "<br><a href='../'>Regresar...</a>"
-							+ "<br/><b>User :</b>"
-							+ "<br/>getNickname retornó : "
-							+ user.getNickname()
-							+ "<br/>getAuthDomain retornó : "
-							+ user.getAuthDomain()
-							+ "<br/>getEmail retornó : "
-							+ user.getEmail()
-							+ "<br/>getUserId retornó : "
-							+ user.getUserId()
-							+ "<br/>getFederatedIdentity retornó : "
-							+ user.getFederatedIdentity()
-							+ "<br/>"
-							+ "Email : "
-							+ misesion.getAttribute("email")
-							+ "Nombre : "
-							+ misesion.getAttribute("name")
-							+ "Apellido : "
-							+ misesion.getAttribute("surname")
-							+ "<br/><b>UserService :</b>"
-							+ "<br/>isUserAdmin retornó : "
-							+ us.isUserAdmin()
-							+ "<br/>isUserLoggedIn retornó : "
-							+ us.isUserLoggedIn()
-							+ "<br/>getCurrentUser retornó : "
-							+ us.getCurrentUser()
-							+ "<br/>"
-							+ "<a href='"
-							+ us.createLogoutURL(req.getRequestURI())
-							+ "'> Cerrar sesión </a>" + "</body></html>");*/
-
+					
+					
 				} else {
-
+					resp.sendRedirect(us.createLogoutURL("/index.jsp"));
 				}
 				// req.setAttribute("person", person);
 				// RequestDispatcher rd =
@@ -102,6 +84,7 @@ public class GmailServlet extends HttpServlet {
 				// rd.forward(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
+				resp.sendRedirect("/");
 			} finally {
 				q.closeAll();
 				pm.close();

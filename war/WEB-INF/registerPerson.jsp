@@ -23,7 +23,7 @@
 				<select name="koperson">
 				<%for( KindOfPerson c : koperson ) {%>
 			
-					<option value="<%= c.getName() %>"><%= c.getName() %></option>
+					<option value="<%= c.getId().getId()%>"><%= c.getName() %></option>
 			
 				<%}%>
 				

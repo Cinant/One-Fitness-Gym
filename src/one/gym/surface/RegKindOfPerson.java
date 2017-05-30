@@ -27,7 +27,10 @@ public class RegKindOfPerson extends HttpServlet{
 			@SuppressWarnings("unchecked")
 			List<Resource> resource = (List<Resource>) q.execute();
 			for(Resource c: resource){
-				Link e = new Link(String.valueOf(c.getId().getId()));
+				//long idr = c.getId().getId();
+				//Link r = pm.getObjectById(Link.class, String.valueOf(c.getId().getId()));
+				
+				Link e = new Link(String.valueOf(c.getId().getId()),c.getKind() );
 				p.getPermision().add(e);
 			}
 			pm.makePersistent(p);
