@@ -59,12 +59,14 @@ public class UpdatePermision extends HttpServlet {
 
 							System.out.println(l.get(i).getName());
 							System.out.println(kop);
-							System.out.println(C + "/" + R + "/" + U + "/" + D);
+							System.out.println(C + "/" + R + "/" + U + "/" + D + "/" + canI);
 							l.get(i).setC(Boolean.parseBoolean(C));
 							l.get(i).setR(Boolean.parseBoolean(R));
 							l.get(i).setU(Boolean.parseBoolean(U));
 							l.get(i).setD(Boolean.parseBoolean(D));
 						} else {
+							System.out.println("gg");
+							l.get(i).setKind(kind);
 							l.get(i).setCanI(Boolean.parseBoolean(canI));
 						}
 					} else if (i == l.size() - 1) {

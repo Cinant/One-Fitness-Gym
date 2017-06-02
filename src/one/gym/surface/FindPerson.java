@@ -26,9 +26,7 @@ public class FindPerson extends HttpServlet {
 		//Person person = pm.getObjectById(Person.class, id);
 		
 		try {
-			@SuppressWarnings("unchecked")
-			//List<Person> person = (List<Person>) q.execute(id);
-			
+			//@SuppressWarnings("unchecked")
 			Person person = pm.getObjectById(Person.class, id);
 			//if (!person.isEmpty()&& person.size()==1) {
 			    //Person p = person.get(0);
